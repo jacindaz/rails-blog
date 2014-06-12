@@ -1,28 +1,17 @@
 <h4>Add an Article</h4>
 
-<form action="/articles" method="post">
-  <div>
-    <label>Author</label>
-    <input name="article[author]" value="<%= params[:author] %>">
-  </div>
+<%= form_for @article do |f| %>
+  <%= f.label :author %>:
+  <%= f.text_field :author %><br>
 
-  <div>
-    <label>Title</label>
-    <input name="article[title]" value="<%= params[:title] %>">
-  </div>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br>
 
-  <div>
-    <label>Body</label>
-    <input name="article[body]" value="<%= params[:body] %>">
-  </div>
+  <%= f.label :body %>:
+  <%= f.text_area :body %><br>
 
-  <div>
-    <% @categories.each do |category| %>
-      <input type="checkbox" name="category[]" value="<%= category.id %>"><%= category.name %><br>
-    <% end %>
-  </div>
+  <%= f.label :categories %>:
+  <%= collection_check_boxes :article, :category_ids, @categories, :id, :name %><br>
 
-  <div>
-    <input type="submit" value="Submit">
-  </div>
-</form>
+  <%= f.submit %>
+<% end %>
