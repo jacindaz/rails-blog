@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog</title>
+</head>
+
+<body>
+  <% if flash.any? %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= yield %>
+  </div>
+
+  <% if flash.any? %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+</body>
+
+</html>
