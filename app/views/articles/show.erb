@@ -14,21 +14,15 @@
 
 <h4>Add a Comment</h4>
 
-<form action="/articles/<%= @article.id %>/comments" method="post">
-  <div>
-    <label>Comment</label>
-    <input name="body" value="<%= params[:body] %>">
-  </div>
+<%= form_for [@article, @comment] do |f| %>
+  <%= f.label :author %>:
+  <%= f.text_field :author %><br>
 
-  <div>
-    <label>Author</label>
-    <input name="author" value="<%= params[:author] %>">
-  </div>
+  <%= f.label :body %>:
+  <%= f.text_area :body %><br>
 
-  <div>
-    <input type="submit" value="Submit">
-  </div>
-</form>
+  <%= f.submit %>
+<% end %>
 
 <h4>Comments</h4>
 
